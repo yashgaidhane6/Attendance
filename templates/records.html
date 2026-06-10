@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Records</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>📚 AMS</h2>
+
+    <a href="/">🏠 Dashboard</a>
+    <a href="/students">👨‍🎓 Students</a>
+    <a href="/attendance">✅ Attendance</a>
+    <a href="/records">📋 Records</a>
+    <a href="/reports">📊 Reports</a>
+
+</div>
+
+<div class="main">
+
+    <h1>Attendance Records</h1>
+
+    <table>
+
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+        {% for row in records %}
+
+        <tr>
+
+            <td>{{ row[0] }}</td>
+
+            <td>{{ row[1] }}</td>
+
+            <td>{{ row[2] }}</td>
+
+            <td>
+                {% if row[3] == 'Present' %}
+                    <span class="present">
+                        Present
+                    </span>
+                {% else %}
+                    <span class="absent">
+                        Absent
+                    </span>
+                {% endif %}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
