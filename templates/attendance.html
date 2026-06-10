@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Attendance</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>📚 AMS</h2>
+
+    <a href="/">🏠 Dashboard</a>
+    <a href="/students">👨‍🎓 Students</a>
+    <a href="/attendance">✅ Attendance</a>
+    <a href="/records">📋 Records</a>
+    <a href="/reports">📊 Reports</a>
+
+</div>
+
+<div class="main">
+
+    <h1>Mark Attendance</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/mark_attendance" method="POST">
+
+        <select name="student_id" required>
+
+            <option value="">Select Student</option>
+
+            {% for student in students %}
+
+            <option value="{{ student[0] }}">
+                {{ student[1] }} - {{ student[2] }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <input type="date"
+               name="date"
+               required>
+
+        <select name="status">
+
+            <option value="Present">
+                Present
+            </option>
+
+            <option value="Absent">
+                Absent
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Save Attendance
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
