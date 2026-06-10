@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+
+    <h2>📚 AMS</h2>
+
+    <a href="/">🏠 Dashboard</a>
+    <a href="/students">👨‍🎓 Students</a>
+    <a href="/attendance">✅ Attendance</a>
+    <a href="/records">📋 Records</a>
+    <a href="/reports">📊 Reports</a>
+
+</div>
+
+<div class="main">
+
+    <h1>Attendance Dashboard</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>{{ total_students }}</h2>
+            <p>Total Students</p>
+        </div>
+
+        <div class="card">
+            <h2>{{ total_present }}</h2>
+            <p>Total Present</p>
+        </div>
+
+        <div class="card">
+            <h2>{{ total_absent }}</h2>
+            <p>Total Absent</p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
