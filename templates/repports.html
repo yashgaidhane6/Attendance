@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reports</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>📚 AMS</h2>
+
+    <a href="/">🏠 Dashboard</a>
+    <a href="/students">👨‍🎓 Students</a>
+    <a href="/attendance">✅ Attendance</a>
+    <a href="/records">📋 Records</a>
+    <a href="/reports">📊 Reports</a>
+
+</div>
+
+<div class="main">
+
+    <h1>Attendance Report</h1>
+
+    <table>
+
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Total Classes</th>
+            <th>Present</th>
+            <th>Attendance %</th>
+        </tr>
+
+        {% for row in reports %}
+
+        <tr>
+
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+
+            <td>{{ row[2] or 0 }}</td>
+
+            <td>{{ row[3] or 0 }}</td>
+
+            <td>
+
+            {% if row[2] and row[2] > 0 %}
+
+            {{ ((row[3] or 0) / row[2] * 100)|round(2) }}%
+
+            {% else %}
+
+            0%
+
+            {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
