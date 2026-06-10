@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Students</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>📚 AMS</h2>
+
+    <a href="/">🏠 Dashboard</a>
+    <a href="/students">👨‍🎓 Students</a>
+    <a href="/attendance">✅ Attendance</a>
+    <a href="/records">📋 Records</a>
+    <a href="/reports">📊 Reports</a>
+
+</div>
+
+<div class="main">
+
+    <h1>Students</h1>
+
+    <form action="/add_student" method="POST">
+
+        <input type="number"
+               name="roll_no"
+               placeholder="Roll Number"
+               required>
+
+        <input type="text"
+               name="name"
+               placeholder="Student Name"
+               required>
+
+        <button>Add Student</button>
+
+    </form>
+
+    <table>
+
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+        </tr>
+
+        {% for student in students %}
+
+        <tr>
+            <td>{{ student[1] }}</td>
+            <td>{{ student[2] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
